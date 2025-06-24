@@ -1,0 +1,78 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header bg-primary text-white">Formulario de Verificación</div>
+    <div class="card-body">
+      <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3">
+        <label class="form-label">PIDM</label>
+        <input type="number" class="form-control" formControlName="pidm">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Periodo</label>
+          <input type="text" class="form-control" formControlName="term_code_entry">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Programa</label>
+          <input type="text" class="form-control" formControlName="program_1">
+        </div>
+
+        <button type="button" class="btn btn-secondary mb-3" (click)="consultarPagos()">Consultar pagos</button>
+
+        <!-- Resultado de pagos -->
+        <div *ngIf="pagos" class="mt-4">
+          <h5>Resultado de Pagos</h5>
+          <table class="table table-bordered mt-2">
+            <tbody>
+              <tr>
+                <th>Periodo</th>
+                <td>{{ pagos.term_code }}</td>
+              </tr>
+              <tr>
+                <th>Programa</th>
+                <td>{{ pagos.program }}</td>
+              </tr>
+              <tr>
+                <th>Aspirantes que pagaron</th>
+                <td>{{ pagos.pagaron }}</td>
+              </tr>
+              <tr>
+                <th>Aspirantes que no pagaron</th>
+                <td>{{ pagos.no_pagaron }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div *ngIf="error" class="alert alert-danger">
+          {{ error }}
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Código de elemento</label>
+          <input type="text" class="form-control" formControlName="admr_code">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Fecha de recibido</label>
+          <input type="date" class="form-control" formControlName="recieve_date">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Comentario</label>
+          <textarea class="form-control" formControlName="comment"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success" [disabled]="registroForm.invalid">Enviar verificación</button>
+
+      </form>
+
+      <div *ngIf="mensaje" class="alert alert-success mt-3">{{ mensaje }}</div>
+      <div *ngIf="error" class="alert alert-danger">
+        {{ error }}
+      </div>
+    </div>
+  </div>
+</div>
