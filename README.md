@@ -4,10 +4,17 @@ Este proyecto es una aplicación web construida en Angular y Bootstrap que permi
 
 ## 📦 Tecnologías utilizadas
 
+ # Frontend
 - [Angular](https://angular.io/)
 - [Bootstrap](https://getbootstrap.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 - HTML/CSS
+
+ # Backend
+- Spring Boot
+- JPA / Hibernate
+- Oracle Database
+- REST API
 
 ---
 
@@ -16,7 +23,7 @@ Este proyecto es una aplicación web construida en Angular y Bootstrap que permi
 1. Clona este repositorio:
 
 ```bash
-git clone https://github.com/tu-usuario/frontend-app.git
+git clone https://github.com/anlopez95/frontend_uniandes.git
 cd frontend-app
 ```
 ### 🛫 Instala las dependencias:
@@ -24,23 +31,19 @@ cd frontend-app
 ```bash
 npm install
 ```
-### 🧪 Ejecución en entorno local
-```bash
-npm start
-```
-La aplicación estará disponible en: http://localhost:4200
-
-> Asegúrate de que el backend esté en funcionamiento y configurado para aceptar solicitudes desde el puerto 4200. Puedes configurar un proxy si es necesario.
 
 ### 📁 Estructura del proyecto
 ```bash
-src/
-├── app/
-│   ├── consulta-pagos/              # Componente para el formulario de consulta de pagos
-│   └── registro-verificacion/       # Componente para el formulario de registro
-├── assets/
-├── styles.css                       # Estilos generales (incluye Bootstrap)
-└── main.ts                          # Punto de entrada de Angular
+registro-verificacion-angular/
+|-- src/
+|   |-- app/
+|   |   |-- registro-verificacion.component.ts
+|   |   |-- registro-verificacion.html
+|-- assets/
+|   |-- logo_uniandes.png
+|-- proxy.conf.json
+|-- angular.json
+|-- package.json
 ```
 
 ### ⚙️ Endpoints utilizados
@@ -62,7 +65,14 @@ Para conectar correctamente el frontend con el backend (que corre en el puerto 8
     "logLevel": "debug"
   }
 }
+```
+### 🧪 Ejecución en entorno local
+```bash
+"npm start" o "ng serve --proxy-config proxy.conf.json"
+```
+La aplicación estará disponible en: http://localhost:4200
 
+> Asegúrate de que el backend esté en funcionamiento y configurado para aceptar solicitudes.
 
 ### 📄 Licencia
 Este proyecto es de uso académico y puede ser adaptado libremente.
