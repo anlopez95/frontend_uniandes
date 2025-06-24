@@ -46,8 +46,9 @@
           </table>
         </div>
 
-        <div *ngIf="error" class="alert alert-danger">
-          {{ error }}
+        <div *ngIf="errorConsulta" class="alert alert-danger">
+          {{ errorConsulta }}
+          <button type="button" class="btn-close position-absolute top-0 end-0 mt-2 me-2" aria-label="Close" (click)="errorConsulta = null"></button>
         </div>
 
         <div class="mb-3">
@@ -69,9 +70,12 @@
 
       </form>
 
-      <div *ngIf="mensaje" class="alert alert-success mt-3">{{ mensaje }}</div>
-      <div *ngIf="error" class="alert alert-danger">
-        {{ error }}
+      <div *ngIf="mensaje" class="alert alert-success mt-3">{{ mensaje }}
+        <button type="button" class="btn-close position-absolute top-0 end-0 mt-2 me-2" aria-label="Close" (click)="mensaje = null"></button>
+      </div>
+      <div *ngIf="errorRegistro" class="alert alert-danger">
+        {{ errorRegistro }}
+        <button type="button" class="btn-close position-absolute top-0 end-0 mt-2 me-2" aria-label="Close" (click)="errorRegistro = null"></button>
       </div>
     </div>
   </div>

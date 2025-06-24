@@ -14,6 +14,8 @@ export class RegistroVerificacionComponent {
   protected mensaje: string | null = null;
   protected error: string | null = null;
   protected pagos: any = null;
+  protected errorConsulta: string | null = null;
+  protected errorRegistro: string | null = null;
 
   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.registroForm = this.fb.group({
@@ -35,7 +37,7 @@ export class RegistroVerificacionComponent {
     const program = this.registroForm.value.program_1;
 
     if (!term || !program) {
-      this.error = 'Debe ingresar Periodo y Programa para consultar pagos.';
+      this.errorConsulta  = 'Debe ingresar Periodo y Programa para consultar pagos.';
       return;
     }
 
@@ -45,7 +47,7 @@ export class RegistroVerificacionComponent {
       next: (res) =>
         this.pagos = res,
       error: (err) =>
-        this.error = err?.error?.mensaje || 'Error al consultar pagos.'
+        this.errorConsulta  = err?.error?.mensaje || 'Error al consultar pagos.'
     });
   }
 
@@ -54,7 +56,7 @@ export class RegistroVerificacionComponent {
     this.error = null;
 
     if (this.registroForm.invalid) {
-      this.error = 'Debe completar todos los campos requeridos.';
+      this.errorRegistro  = 'Debe completar todos los campos requeridos.';
       return;
     }
 
@@ -74,7 +76,7 @@ export class RegistroVerificacionComponent {
       payload
     ).subscribe({
       next: (res) => this.mensaje = res?.message || 'Registro exitoso',
-      error: (err) => this.error = err?.error?.message || 'Error en el proceso'
+      error: (err) => this.errorRegistro  = err?.error?.message || 'Error en el proceso'
     });
   }
 }
